@@ -1,116 +1,323 @@
 \documentclass[12pt,a4paper]{article}
 
-% -------------------------------------------------
-% PACKAGES
-% -------------------------------------------------
-\usepackage[a4paper, margin=1in]{geometry}
+% -------------------- PACKAGES --------------------
+\usepackage[a4paper,margin=1.7cm]{geometry}
+\usepackage{times}
 \usepackage{setspace}
 \usepackage{enumitem}
-\usepackage{titlesec}
 \usepackage{array}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
 
-% -------------------------------------------------
-% DOCUMENT SETTINGS
-% -------------------------------------------------
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt}
+% -------------------- PAGE STYLE --------------------
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\small BlurGuard Project Journal -- Journal No. 02}
 
+% -------------------- SECTION STYLE --------------------
 \titleformat{\section}
-  {\normalfont\bfseries\large}
-  {}
-  {0pt}
-  {}
+  {\normalfont\bfseries\fontsize{14}{17}\selectfont}
+  {\thesection.}{0.5em}{}
 
+\titleformat{\subsection}
+  {\normalfont\bfseries\fontsize{12}{15}\selectfont}
+  {\thesubsection}{0.5em}{}
+
+% -------------------- DOCUMENT --------------------
 \begin{document}
 
-% -------------------------------------------------
-% TITLE
-% -------------------------------------------------
+% ====================================================
+%                    COVER PAGE
+% ====================================================
+
+\thispagestyle{fancy}
+
+\vspace*{1.35cm}
 
 \begin{center}
-    {\Large \textbf{PROJECT JOURNAL}}\\[10pt]
 
-    {\large \textbf{BlurGuard -- Real-Time Screen-Share Sensitive Data Censor}}
+{\bfseries\fontsize{13}{16}\selectfont
+BlurGuard -- Real-Time Screen-Share Sensitive Data Censor
+}
+
+\vspace{0.45cm}
+
+{\bfseries\fontsize{11}{14}\selectfont
+Software Engineering Project Journal -- 02
+}
+
+\vspace{1.45cm}
+
+{\bfseries\fontsize{11}{14}\selectfont
+Submitted to:
+}
+
+\vspace{0.12cm}
+
+{\fontsize{10}{14}\selectfont
+Nisha Thakur
+}
+
+{\fontsize{10}{14}\selectfont
+Thapar Institute of Engineering and Technology
+}
+
+\vspace{1.45cm}
+
+{\bfseries\fontsize{11}{14}\selectfont
+Submitted by:
+}
+
+\vspace{0.12cm}
+
+{\fontsize{10}{14}\selectfont
+Lakshita
+}
+
+\vspace{8cm}
+
+{\bfseries\fontsize{11}{14}\selectfont
+Journal 02
+}
+
+\vspace{0.12cm}
+
+{\fontsize{10}{14}\selectfont
+Sequence Diagram and Collaboration Diagram
+}
+
+\vspace{0.12cm}
+
+{\fontsize{10}{14}\selectfont
+September 2026
+}
+
 \end{center}
 
-\vspace{10pt}
+\newpage
 
-% -------------------------------------------------
-% JOURNAL DETAILS
-% -------------------------------------------------
+% ====================================================
+%                    1. OBJECTIVE
+% ====================================================
 
-\begin{tabular}{@{}p{0.48\textwidth}p{0.48\textwidth}@{}}
-\textbf{Journal No.:} 01 &
-\raggedleft \textbf{Date:} August 2026
-\end{tabular}
+\section{Objective}
 
-\vspace{12pt}
+The objective of this journal is to document the system interaction modelling activities completed for the BlurGuard project after the initial project planning and functional modelling stages.
 
-% -------------------------------------------------
-% TEAM MEMBERS
-% -------------------------------------------------
+The main objectives were:
 
-\textbf{Team Members:}
-
-\begin{itemize}[leftmargin=1.5cm]
-    \item Lakshita
-    \item Rhythm
-    \item Yashjot
+\begin{itemize}[leftmargin=1.4em]
+    \item To identify the sequence of interactions between the user, BlurGuard system, detection and analysis engine, operating system, and screen-sharing platform.
+    
+    \item To represent the time-ordered flow of messages using a Sequence Diagram.
+    
+    \item To represent the communication relationships between participating components using a Collaboration Diagram.
+    
+    \item To improve the understanding of how BlurGuard performs real-time sensitive-data detection and protection during screen sharing.
+    
+    \item To organize the completed diagrams for future system design, implementation, and documentation.
 \end{itemize}
 
-\vspace{5pt}
 
-% -------------------------------------------------
-% WORK COMPLETED
-% -------------------------------------------------
+% ====================================================
+%                 2. WORK COMPLETED
+% ====================================================
 
-\textbf{\large Work Completed}
+\section{Work Completed}
 
-\vspace{4pt}
+After defining the major modules and overall workflow of BlurGuard, the next Software Engineering activity was interaction modelling.
 
-Studied the BlurGuard problem domain, discussed the proposed solution, and
-identified the major users, actors, system modules, and overall workflow for
-real-time detection and censoring of sensitive information during screen
-sharing.
+Two major UML artifacts were completed:
 
-Prepared the initial project plan covering the problem statement, proposed
-solution, major modules, technology stack, project scope, software engineering
-diagrams, development stages, testing requirements, and future scope.
+\begin{enumerate}[leftmargin=1.6em]
+    \item Sequence Diagram
+    \item Collaboration Diagram
+\end{enumerate}
 
-\vspace{8pt}
+These diagrams were prepared to describe how the different actors and system components communicate while BlurGuard captures the screen, detects sensitive information, applies protection, and provides the protected output to the screen-sharing platform.
 
-% -------------------------------------------------
-% OUTCOME
-% -------------------------------------------------
 
-\textbf{\large Outcome}
+% ====================================================
+%                 3. SEQUENCE DIAGRAM
+% ====================================================
 
-\vspace{4pt}
+\section{Sequence Diagram}
 
-The initial project scope, major functionalities, system workflow, and
-development milestones of BlurGuard were defined.
+\subsection{Purpose}
 
-\vspace{8pt}
+A Sequence Diagram was prepared to model the time-ordered interaction between the participating actors and components of BlurGuard.
 
-% -------------------------------------------------
-% NEXT PLANNED WORK
-% -------------------------------------------------
+It shows how requests, captured frames, detection results, protection decisions, and protected frames move through the system during a screen-sharing session.
 
-\textbf{\large Next Planned Work}
+\subsection{Main Participants}
 
-\vspace{4pt}
+The main participants represented in the Sequence Diagram are:
 
-Complete Requirements Engineering and define the functional and
-non-functional requirements of the BlurGuard system.
+\begin{itemize}[leftmargin=1.4em]
 
-\vfill
+    \item \textbf{End User} -- starts or controls the screen-sharing session and selects the screen or application to monitor.
 
-% -------------------------------------------------
-% FOOTER
-% -------------------------------------------------
+    \item \textbf{Operating System} -- provides access to the selected screen or application and supplies captured frame data.
 
-\begin{flushright}
-    \textit{BlurGuard Project Journal -- Journal No. 01}
-\end{flushright}
+    \item \textbf{BlurGuard System} -- manages the monitoring session, preprocessing, decision flow, protection, and output.
+
+    \item \textbf{Detection \& Analysis Engine} -- performs OCR/text detection, sensitive-data detection, computer-vision analysis, context/risk analysis, and region tracking.
+
+    \item \textbf{Screen Sharing Platform} -- receives the protected output for screen sharing.
+
+\end{itemize}
+
+\subsection{Main Interaction Flow}
+
+The sequence begins when the End User starts a monitoring or screen-sharing session.
+
+BlurGuard requests access to the selected screen or application. The Operating System provides the captured frame, which is then preprocessed by BlurGuard.
+
+The Detection \& Analysis Engine analyses the frame for sensitive information and returns the detection result and risk information.
+
+If sensitive content is identified, BlurGuard applies an appropriate protection method such as blur, pixelation, or redaction.
+
+The protected frame is then forwarded to the Screen Sharing Platform.
+
+This process continues for subsequent frames while monitoring is active.
+
+\subsection{Outcome}
+
+The Sequence Diagram provides a clear time-based representation of the BlurGuard workflow.
+
+It helps identify the order of operations, the messages exchanged between components, and the point at which sensitive information is detected and protected before screen sharing.
+
+
+% ====================================================
+%              4. COLLABORATION DIAGRAM
+% ====================================================
+
+\section{Collaboration Diagram}
+
+\subsection{Purpose}
+
+A Collaboration Diagram was prepared to model the structural communication between the objects and components participating in the BlurGuard workflow.
+
+Instead of emphasizing time vertically, the diagram emphasizes which components communicate with each other and the messages exchanged between them.
+
+\subsection{Main Components}
+
+The Collaboration Diagram includes the End User, Operating System, BlurGuard System, Detection \& Analysis Engine, and Screen Sharing Platform.
+
+These components work together to perform continuous screen monitoring and sensitive-data protection.
+
+\subsection{Communication Flow}
+
+The communication flow starts with the End User initiating a monitoring session.
+
+BlurGuard communicates with the Operating System to capture the selected screen or application.
+
+The captured frame is passed through preprocessing and then sent to the Detection \& Analysis Engine.
+
+The engine returns detection and risk information to BlurGuard.
+
+Based on the result, BlurGuard either keeps the frame unchanged or applies blur, pixelation, or redaction to the sensitive region.
+
+The resulting protected frame is communicated to the Screen Sharing Platform.
+
+\subsection{Outcome}
+
+The Collaboration Diagram provides a structural view of the system interactions.
+
+It helps clarify the responsibilities of the participating components and the communication links required to implement the real-time protection workflow.
+
+
+% ====================================================
+%              5. CORE INTERACTION
+% ====================================================
+
+\section{Core Interaction Identified}
+
+The interaction model establishes the following main workflow:
+
+\begin{center}
+\textbf{
+End User
+$\rightarrow$
+BlurGuard Session
+$\rightarrow$
+Screen/Application Capture
+$\rightarrow$
+Frame Preprocessing
+$\rightarrow$
+Sensitive Data Detection \& Risk Analysis
+$\rightarrow$
+Protection Decision
+$\rightarrow$
+Blur/Pixelate/Redact
+$\rightarrow$
+Protected Output
+$\rightarrow$
+Screen Sharing Platform
+}
+\end{center}
+
+The workflow is repeated continuously while the monitoring session is active so that newly appearing sensitive information can be detected and protected.
+
+
+% ====================================================
+%                    6. RESULT
+% ====================================================
+
+\section{Result}
+
+The following work has been completed in this journal:
+
+\vspace{0.2cm}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.35}
+
+\begin{tabular}{|p{9.5cm}|p{4.5cm}|}
+\hline
+\textbf{Activity} & \textbf{Status} \\
+\hline
+Interaction flow identified & Completed \\
+\hline
+Sequence Diagram prepared & Completed \\
+\hline
+Collaboration Diagram prepared & Completed \\
+\hline
+Main system participants identified & Completed \\
+\hline
+Communication between components modelled & Completed \\
+\hline
+Diagrams organized for documentation & Completed \\
+\hline
+\end{tabular}
+
+\end{center}
+
+
+% ====================================================
+%             7. LEARNING / UNDERSTANDING
+% ====================================================
+
+\section{Learning / Engineering Understanding}
+
+This activity helped establish how Software Engineering diagrams can be used to model dynamic system behaviour and communication before implementation.
+
+The Sequence Diagram provides a time-ordered view of interactions, while the Collaboration Diagram provides a communication-oriented view of the same workflow.
+
+Preparing both diagrams helped clarify component responsibilities and the messages required for real-time sensitive-data protection.
+
+
+% ====================================================
+%                    8. CONCLUSION
+% ====================================================
+
+\section{Conclusion}
+
+Journal 02 documents the completion of the Sequence Diagram and Collaboration Diagram for the BlurGuard -- Real-Time Screen-Share Sensitive Data Censor project.
+
+The diagrams establish the interaction flow between the End User, Operating System, BlurGuard System, Detection \& Analysis Engine, and Screen Sharing Platform.
+
+These models will be used as inputs for the next stages of detailed system design, class modelling, implementation, and testing.
 
 \end{document}
