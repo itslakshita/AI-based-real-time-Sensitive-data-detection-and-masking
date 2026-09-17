@@ -1,0 +1,652 @@
+\documentclass[12pt,a4paper]{article}
+
+% --------------------------------------------------
+% Packages
+% --------------------------------------------------
+\usepackage[a4paper,margin=1.7cm]{geometry}
+\usepackage{times}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{longtable}
+
+% --------------------------------------------------
+% Page Header / Footer
+% --------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[L]{\textbf{Journal 3}}
+\fancyhead[R]{BlurGuard -- Real-Time Screen-Share Sensitive Data Censor}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancyfoot[C]{\thepage}
+
+% --------------------------------------------------
+% Section Formatting
+% --------------------------------------------------
+\titleformat{\section}
+  {\normalfont\bfseries\fontsize{11.5}{14}\selectfont}
+  {\thesection.}{0.5em}{}
+
+\titleformat{\subsection}
+  {\normalfont\bfseries\fontsize{10}{12}\selectfont}
+  {\thesubsection}{0.5em}{}
+
+\titlespacing*{\section}
+  {0pt}{7pt}{5pt}
+
+\titlespacing*{\subsection}
+  {0pt}{5pt}{3pt}
+
+% --------------------------------------------------
+% Paragraph / List Formatting
+% --------------------------------------------------
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+
+\setlist[itemize]{
+    leftmargin=1.2em,
+    itemsep=1.5pt,
+    topsep=2pt,
+    parsep=0pt
+}
+
+% ==================================================
+% DOCUMENT
+% ==================================================
+\begin{document}
+
+% ==================================================
+% JOURNAL HEADER
+% ==================================================
+
+\begin{center}
+
+{\bfseries\fontsize{14}{16}\selectfont JOURNAL 3}
+
+\vspace{3pt}
+
+{\bfseries\fontsize{11}{13}\selectfont Frontend Implementation}
+
+\vspace{3pt}
+
+{\bfseries\fontsize{10.5}{13}\selectfont
+BlurGuard -- Real-Time Screen-Share Sensitive Data Censor}
+
+\end{center}
+
+\vspace{5pt}
+
+% ==================================================
+% PROJECT INFORMATION TABLE
+% ==================================================
+
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+
+\begin{tabular}{|p{3.8cm}|p{12.4cm}|}
+\hline
+
+\textbf{Project}
+&
+BlurGuard -- Real-Time Screen-Share Sensitive Data Censor
+\\
+\hline
+
+\textbf{Development Stage}
+&
+Frontend Prototype Implementation
+\\
+\hline
+
+\textbf{Technology Used}
+&
+React, Vite, React Router, JavaScript, CSS
+\\
+\hline
+
+\textbf{State Management}
+&
+React Context API
+\\
+\hline
+
+\textbf{Student}
+&
+Lakshita
+\\
+\hline
+
+\end{tabular}
+\end{center}
+
+\vspace{3pt}
+
+% ==================================================
+% 1. OBJECTIVE
+% ==================================================
+
+\section{Objective}
+
+The objective of this development phase was to implement the frontend prototype of the
+BlurGuard -- Real-Time Screen-Share Sensitive Data Censor system using React. The frontend
+was developed to provide an interactive interface for users to configure privacy settings,
+select the screen or application to monitor, and visualize real-time detection and protection
+of sensitive information during screen sharing.
+
+The work focused on application setup, navigation, user interaction flows, real-time
+monitoring interface, configuration settings, and frontend integration of core features
+to demonstrate the major workflow before backend and model integration.
+
+% ==================================================
+% 2. DEVELOPMENT ENVIRONMENT
+% ==================================================
+
+\section{Development Environment and Technologies}
+
+The frontend was developed using the following technologies:
+
+\begin{itemize}
+
+    \item \textbf{React} -- used for developing reusable user interface components.
+
+    \item \textbf{Vite} -- used for creating and running the React development project.
+
+    \item \textbf{JavaScript} -- used for frontend application logic.
+
+    \item \textbf{React Router} -- used for navigation between different application pages.
+
+    \item \textbf{CSS} -- used for styling dashboards, forms, cards, navigation bars,
+    buttons, and status indicators.
+
+    \item \textbf{React Context API} -- used for maintaining shared application state
+    between frontend components.
+
+\end{itemize}
+
+% ==================================================
+% IMPORTANT:
+% NO \newpage OR \clearpage HERE
+% SECTION 3 WILL CONTINUE IN THE REMAINING SPACE
+% ==================================================
+
+% ==================================================
+% 3. FRONTEND PROJECT SETUP
+% ==================================================
+
+\section{Frontend Project Setup}
+
+The frontend project was organized as a modular React application. Separate components
+and page sections were considered for authentication, dashboard monitoring, privacy settings,
+detection results, and session controls. This structure allows individual parts of the
+interface to be developed and modified without affecting the complete application.
+
+The major frontend sections include:
+
+\begin{itemize}
+
+    \item Login / User Session
+
+    \item Main Dashboard
+
+    \item Screen and Application Selection
+
+    \item Privacy Rules and Settings
+
+    \item Live Monitoring
+
+    \item Detection and Risk Results
+
+    \item Protected Region / Censor Controls
+
+    \item Alerts and User Review
+
+\end{itemize}
+
+% ==================================================
+% 4. APPLICATION NAVIGATION
+% ==================================================
+
+\section{Application Navigation}
+
+Frontend navigation was structured so that the user can move between the major BlurGuard
+functions from a single application interface. The planned major routes and views are:
+
+\begin{itemize}
+
+    \item Login
+
+    \item Dashboard
+
+    \item Screen / Window Selection
+
+    \item Privacy Settings
+
+    \item Monitoring Session
+
+    \item Detection Results
+
+    \item Alerts / Review
+
+    \item Session History / Logs
+
+\end{itemize}
+
+The navigation structure keeps the frontend organized and provides a clear path from
+starting a session to monitoring and protecting sensitive information.
+
+% ==================================================
+% 5. LOGIN AND USER SESSION
+% ==================================================
+
+\section{Login and User Session Interface}
+
+A simple login interface was included as the entry point of the BlurGuard frontend.
+The interface is intended to establish the user session before the monitoring dashboard
+is opened.
+
+The interface contains:
+
+\begin{itemize}
+
+    \item Email / username field
+
+    \item Password field
+
+    \item Login button
+
+    \item Session entry and logout controls
+
+\end{itemize}
+
+At the prototype stage, the interface focuses on frontend interaction. Actual authentication,
+authorization, and secure session handling can be integrated with the backend in a later stage.
+
+% ==================================================
+% 6. DASHBOARD
+% ==================================================
+
+\section{BlurGuard Dashboard}
+
+The main dashboard was designed as the central control interface for a screen-protection
+session. It provides the user with a quick overview of the current monitoring state and
+the actions required to start or manage protection.
+
+The dashboard includes:
+
+\begin{itemize}
+
+    \item Monitoring status
+
+    \item Selected screen or application
+
+    \item Protection status
+
+    \item Number of detected sensitive regions
+
+    \item Current risk level
+
+    \item Start / Pause / Stop monitoring controls
+
+    \item Access to privacy settings
+
+    \item Recent alerts or detection events
+
+\end{itemize}
+
+% ==================================================
+% 7. SCREEN / APPLICATION SELECTION
+% ==================================================
+
+\section{Screen / Application Selection}
+
+A dedicated interface was designed for selecting the screen, application window, or
+display region that BlurGuard should monitor. This prevents unnecessary monitoring
+of unrelated content and provides the user with control over the monitoring scope.
+
+The selection interface can display available screens or windows and allow the user
+to confirm the target before starting a monitoring session.
+
+% ==================================================
+% 8. PRIVACY RULES
+% ==================================================
+
+\section{Privacy Rules and Settings}
+
+A privacy settings interface was designed to allow the user to configure which categories
+of information should be protected. The interface can provide controls for sensitive
+data categories and protection behaviour.
+
+Example configuration options include:
+
+\begin{itemize}
+
+    \item Email addresses
+
+    \item Phone numbers
+
+    \item Passwords and authentication secrets
+
+    \item API keys and access tokens
+
+    \item Payment or card-related information
+
+    \item Personal identification information
+
+    \item QR codes or other sensitive visual content
+
+    \item Blur, pixelate, or redact as the protection method
+
+    \item Detection confidence threshold
+
+\end{itemize}
+
+% ==================================================
+% 9. REAL-TIME MONITORING
+% ==================================================
+
+\section{Real-Time Monitoring Interface}
+
+The monitoring interface was designed to represent the live state of the BlurGuard
+system while a screen-sharing session is active. The interface provides visual feedback
+so that the user can understand whether monitoring and protection are running.
+
+The monitoring view can display:
+
+\begin{itemize}
+
+    \item Current monitoring state
+
+    \item Selected screen or application
+
+    \item Frames being monitored
+
+    \item Detection activity
+
+    \item Protected regions
+
+    \item Current risk level
+
+    \item Alerts requiring user attention
+
+\end{itemize}
+
+% ==================================================
+% 10. DETECTION RESULTS
+% ==================================================
+
+\section{Detection Results and Alert Interface}
+
+A detection-results section was designed to show information returned by the detection
+and analysis layer. The purpose of this interface is to make the protection process
+understandable to the user without exposing the sensitive information itself unnecessarily.
+
+The interface can represent:
+
+\begin{itemize}
+
+    \item Detection category
+
+    \item Confidence level
+
+    \item Risk level
+
+    \item Detected region
+
+    \item Protection action applied
+
+    \item Time of detection
+
+\end{itemize}
+
+An alert or review action can be provided when the system detects content that requires
+confirmation or when the confidence level is below the configured threshold.
+
+% ==================================================
+% 11. FRONTEND COMPONENT STRUCTURE
+% ==================================================
+
+\section{Frontend Component Structure}
+
+The frontend was organized around reusable components so that common interface
+elements can be shared across different pages. A modular component structure also
+makes future integration with backend APIs and real-time detection services easier.
+
+\vspace{2pt}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+
+\begin{tabular}{|p{5.8cm}|p{10.4cm}|}
+\hline
+
+\textbf{Component / Page} & \textbf{Purpose}
+\\
+\hline
+
+Login & User session entry
+\\
+\hline
+
+Dashboard & Central monitoring controls and status
+\\
+\hline
+
+ScreenSelector & Select screen or application to monitor
+\\
+\hline
+
+PrivacySettings & Configure sensitive-data rules
+\\
+\hline
+
+MonitoringPanel & Display live monitoring state
+\\
+\hline
+
+DetectionPanel & Display detection and risk information
+\\
+\hline
+
+AlertPanel & Display alerts and review actions
+\\
+\hline
+
+ProtectionStatus & Show current censoring/protection state
+\\
+\hline
+
+\end{tabular}
+\end{center}
+
+% ==================================================
+% 12. STATE AND INTEGRATION
+% ==================================================
+
+\section{Frontend State and Integration}
+
+Shared frontend state was considered for maintaining information such as the active
+monitoring session, selected screen or application, privacy settings, detection results,
+and protection status. React Context API can be used to make this information available
+to multiple components without maintaining separate copies of the same state.
+
+The frontend is structured so that the detection and analysis engine can later provide
+real-time results through an API, WebSocket connection, or another application-level
+communication mechanism. Similarly, the protected output can later be connected to
+the screen-sharing integration layer.
+
+% ==================================================
+% 13. FRONTEND INTEGRATION AND TESTING
+% ==================================================
+
+\section{Frontend Integration and Testing}
+
+The frontend prototype was checked from the perspective of navigation, interface
+interaction, form behaviour, and consistency of the monitoring workflow.
+
+The main testing activities include:
+
+\begin{itemize}
+
+    \item Starting the frontend application.
+
+    \item Navigation between the main pages.
+
+    \item Opening the monitoring dashboard.
+
+    \item Selecting a screen or application.
+
+    \item Changing privacy settings.
+
+    \item Starting and stopping the monitoring interface.
+
+    \item Displaying detection and risk information.
+
+    \item Displaying protection status and alerts.
+
+\end{itemize}
+
+These checks help ensure that the frontend provides a consistent user flow before
+connecting the interface to the complete detection and screen-sharing pipeline.
+
+% ==================================================
+% 14. CURRENT FRONTEND RESULT
+% ==================================================
+
+\section{Current Frontend Result}
+
+The frontend stage establishes the user-facing structure of BlurGuard. The main dashboard,
+screen/application selection, privacy configuration, monitoring controls, detection results,
+and alert interfaces have been defined as the primary frontend workflow.
+
+The current frontend prototype provides the foundation for integrating the actual OCR,
+PII/secret detection, computer-vision analysis, protection engine, and screen-sharing
+output in subsequent development stages.
+
+% ==================================================
+% 15. CURRENT LIMITATIONS
+% ==================================================
+
+\section{Current Limitations}
+
+The current frontend stage has the following limitations:
+
+\begin{itemize}
+
+    \item Backend API integration is not yet part of this development stage.
+
+    \item Actual authentication and authorization require backend support.
+
+    \item Real-time detection results depend on integration with the detection engine.
+
+    \item Actual screen capture and protected output require system-level integration.
+
+    \item Persistent storage and complete session history require backend/database integration.
+
+\end{itemize}
+
+% ==================================================
+% 16. LEARNING OUTCOMES
+% ==================================================
+
+\section{Learning Outcomes}
+
+The frontend implementation provided practical understanding of:
+
+\begin{itemize}
+
+    \item React component-based development.
+
+    \item Frontend routing and multi-page navigation.
+
+    \item Designing interfaces for real-time monitoring systems.
+
+    \item Interactive forms and configuration controls.
+
+    \item Shared state management using React Context API.
+
+    \item Modular frontend architecture.
+
+    \item Frontend integration planning for backend and real-time services.
+
+    \item Debugging and testing an interactive prototype before full system integration.
+
+\end{itemize}
+
+% ==================================================
+% 17. RESULT
+% ==================================================
+
+\section{Result}
+
+The following development activities were completed for this journal:
+
+\vspace{2pt}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+
+\begin{tabular}{|p{10.8cm}|p{5.4cm}|}
+\hline
+
+\textbf{Activity} & \textbf{Status}
+\\
+\hline
+
+Frontend project structure defined & Completed
+\\
+\hline
+
+Main dashboard interface designed & Completed
+\\
+\hline
+
+Screen / application selection interface & Completed
+\\
+\hline
+
+Privacy settings interface & Completed
+\\
+\hline
+
+Monitoring interface & Completed
+\\
+\hline
+
+Detection and alert interface & Completed
+\\
+\hline
+
+Frontend component structure & Completed
+\\
+\hline
+
+Frontend workflow testing & Completed
+\\
+\hline
+
+\end{tabular}
+\end{center}
+
+% ==================================================
+% 18. CONCLUSION
+% ==================================================
+
+\section{Conclusion}
+
+Journal 03 documents the frontend implementation stage of the BlurGuard --
+Real-Time Screen-Share Sensitive Data Censor project. The frontend structure
+establishes the main user-facing workflow for starting a monitoring session,
+selecting a screen or application, configuring privacy rules, viewing monitoring
+and detection information, and controlling the protection process.
+
+The completed frontend design provides a foundation for the next development
+stages, including integration with the OCR and sensitive-data detection engine,
+context and risk analysis, sensitive-region tracking, protection engine, and
+screen-sharing output.
+
+\end{document}
