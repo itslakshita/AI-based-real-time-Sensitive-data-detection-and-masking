@@ -1,0 +1,121 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=0.78in]{geometry}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{tcolorbox}
+
+\definecolor{darkblue}{RGB}{35,65,105}
+
+\setstretch{1.05}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Yashjot Kaur}}
+\rhead{\textcolor{darkblue}{Week 3 Journal}}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{0.5pt}
+
+\titleformat{\section}
+{\large\bfseries\color{darkblue}}
+{}{0em}{}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{\textcolor{darkblue}{WEEK 3 JOURNAL}}}\\[5pt]
+    {\large \textbf{AI-based Real-Time Sensitive Data Detection and Masking}}\\[6pt]
+    \textbf{Name: Yashjot Kaur \quad | \quad Roll No.: 1024170452}
+\end{center}
+
+\vspace{4pt}
+\hrule
+\vspace{8pt}
+
+\section*{1. Objective}
+
+The main objective of Week 3 was to move from understanding the project
+concept to starting the actual project work. I focused on understanding
+how sensitive information can be detected from text and how the detected
+information can later be masked.
+
+\section*{2. Work Done}
+
+During this week, I worked on the initial development of the project. I
+created sample text containing information such as names, email addresses,
+phone numbers and other personal details.
+
+I studied how the system can identify such information using simple
+patterns and NLP techniques. I also looked at how the detected information
+can be separated into categories such as \textbf{EMAIL}, \textbf{PHONE},
+and \textbf{PERSON}.
+
+\begin{center}
+\begin{tcolorbox}[
+    colback=gray!5,
+    colframe=darkblue,
+    width=0.9\textwidth,
+    arc=2mm,
+    boxrule=0.5pt
+]
+\centering
+\textbf{Text Input}
+$\rightarrow$
+\textbf{Find Sensitive Information}
+$\rightarrow$
+\textbf{Identify its Type}
+$\rightarrow$
+\textbf{Mask the Information}
+\end{tcolorbox}
+\end{center}
+
+\section*{3. Practical Understanding}
+
+I worked with different examples to understand how the same type of
+information can appear in different formats. For example, phone numbers
+may contain spaces, country codes or different separators.
+
+This helped me understand why the detection rules need to be tested with
+different inputs instead of checking only one fixed format.
+
+\section*{4. Report Work}
+
+Along with the technical work, I contributed to the preparation of the
+project report. I worked on organising the content and documenting the
+project background, objectives, methodology and the work completed so far.
+
+I also helped in presenting the technical workflow in a clear and
+structured manner so that the report explains the project development
+step by step.
+
+\section*{5. My Contribution}
+
+My main contribution this week was understanding and working on the
+initial detection stage. I also contributed to testing sample inputs and
+documenting the progress of the project in the report.
+
+This helped me connect the theoretical concepts studied earlier with the
+actual project implementation.
+
+\section*{6. Learning Outcomes}
+
+This week helped me understand how a real project moves from an idea to
+implementation. I learned that detecting sensitive information is not
+only about finding patterns, but also about checking different cases and
+improving the detection process.
+
+
+
+
+\vfill
+
+\begin{center}
+    \textcolor{darkblue}{\rule{0.35\textwidth}{0.5pt}}\\[3pt]
+   
+\end{center}
+
+\end{document}
