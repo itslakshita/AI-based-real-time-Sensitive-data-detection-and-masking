@@ -1,0 +1,6 @@
+{
+  "name": "BlurGuard",
+  "description": "Real-time screen-sharing privacy protection system with OCR, sensitive data detection, risk assessment, and automatic visual masking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
