@@ -1,0 +1,1009 @@
+{
+  "users": [
+    {
+      "id": "usr-admin-01",
+      "email": "admin@blurguard.io",
+      "name": "Elena Vance",
+      "role": "Administrator",
+      "avatarUrl": "/src/assets/images/avatar_admin_1795010641284.jpg",
+      "active": true,
+      "department": "Security Operations",
+      "createdAt": "2026-10-19T16:33:05.358Z",
+      "lastLoginAt": "2026-11-27T07:19:02.152Z",
+      "passwordHash": "84d7ebd959886a0fa242de16df2c34c4:ce443f9e996e746a0197092e2e424e5e7816a9ea24036318620434246229b4addd129774541525832600a292208fce9acebe3cc9323fbdfe9132e8f2fff05424",
+      "permissions": {
+        "managePolicies": true,
+        "manageSources": true,
+        "overrideMasks": true,
+        "exportLogs": true,
+        "triggerPanic": true
+      }
+    },
+    {
+      "id": "usr-pres-01",
+      "email": "presenter@blurguard.io",
+      "name": "Marcus Sterling",
+      "role": "Presenter",
+      "avatarUrl": "/src/assets/images/avatar_presenter_1795010640626.jpg",
+      "active": true,
+      "department": "Solutions Engineering",
+      "createdAt": "2026-10-31T16:33:05.358Z",
+      "lastLoginAt": "2026-11-18T15:48:05.358Z",
+      "passwordHash": "e6c3012adb4b416176b2ff6c3de87fbe:a2ecf8c5c8df6fbf080e36141caf58d67a35dbb50044059fae390aba4cc959a7f0609079eb6bb0a9332b6d8ec4111e555864384d20a0c9042602f8845bf48624",
+      "permissions": {
+        "managePolicies": false,
+        "manageSources": true,
+        "overrideMasks": true,
+        "exportLogs": true,
+        "triggerPanic": true
+      }
+    },
+    {
+      "id": "usr-pres-02",
+      "email": "priya.nair@blurguard.io",
+      "name": "Priya Nair",
+      "role": "Presenter",
+      "avatarUrl": "",
+      "active": true,
+      "department": "Customer Success",
+      "createdAt": "2026-11-08T16:33:05.358Z",
+      "lastLoginAt": "2026-11-18T13:33:05.358Z",
+      "passwordHash": "c0b4a066ea970073aabf0ab41d72011a:ce6bc1924fd856a2299a24a8e5cb6c50e4f97c8a50355a98855daf0b599b11ec424b0b9112e98622c52f48ac1be1d5d64cfeb5dee52db7c34a74cf2f8072a1c3",
+      "permissions": {
+        "managePolicies": false,
+        "manageSources": true,
+        "overrideMasks": true,
+        "exportLogs": true,
+        "triggerPanic": true
+      }
+    },
+    {
+      "id": "usr-e122e8bc",
+      "email": "lakshitadabra21@gmail.com",
+      "name": "Lakshita Dabra",
+      "role": "Presenter",
+      "avatarUrl": "",
+      "active": true,
+      "department": "Security Operations",
+      "permissions": {
+        "managePolicies": false,
+        "manageSources": true,
+        "overrideMasks": true,
+        "exportLogs": true,
+        "triggerPanic": true
+      },
+      "createdAt": "2026-11-19T13:38:37.944Z",
+      "lastLoginAt": "2026-11-19T13:40:08.202Z",
+      "passwordHash": "284c4282565cc8cd724dac4552e797bd:5d000acfb4f92613931e2ae13814576d602908d18455d512dacede7b1c462383b7b77bdf7aea1e57c7ad8604c86147e0393fca13aeaa88d269d7219f5babaa28"
+    }
+  ],
+  "policies": [
+    {
+      "id": "pol-strict",
+      "name": "Strict Enterprise Compliance",
+      "description": "Masks all credentials, financial cards, PII, and internal keywords with maximum blur or opaque redaction.",
+      "isDefault": true,
+      "minRiskThreshold": "Low",
+      "blurIntensity": 18,
+      "pixelBlockSize": 12,
+      "paddingPx": 6,
+      "requireManualReviewForUncertain": true,
+      "categories": {
+        "api_key": {
+          "enabled": true,
+          "maskingStyle": "blur",
+          "baseRisk": "Critical"
+        },
+        "password": {
+          "enabled": true,
+          "maskingStyle": "blur",
+          "baseRisk": "Critical"
+        },
+        "credit_card": {
+          "enabled": true,
+          "maskingStyle": "blur",
+          "baseRisk": "Critical"
+        },
+        "ssn": {
+          "enabled": true,
+          "maskingStyle": "blur",
+          "baseRisk": "Critical"
+        },
+        "email": {
+          "enabled": true,
+          "maskingStyle": "blur",
+          "baseRisk": "Medium"
+        },
+        "phone": {
+          "enabled": true,
+          "maskingStyle": "blur",
+          "baseRisk": "Medium"
+        },
+        "confidential": {
+          "enabled": true,
+          "maskingStyle": "blur",
+          "baseRisk": "High"
+        },
+        "custom": {
+          "enabled": true,
+          "maskingStyle": "blur",
+          "baseRisk": "High"
+        },
+        "qr_code": {
+          "enabled": true,
+          "maskingStyle": "blur",
+          "baseRisk": "High"
+        },
+        "url": {
+          "enabled": true,
+          "maskingStyle": "blur",
+          "baseRisk": "High"
+        }
+      },
+      "customRules": [
+        {
+          "id": "rule-internal-proj",
+          "name": "Internal Codename Guard",
+          "pattern": "\\bPROJECT[-_ ]?(?:APOLLO|HELIOS|TITAN)\\b",
+          "flags": "gi",
+          "riskLevel": "High",
+          "maskingStyle": "redact",
+          "enabled": true,
+          "description": "Redacts confidential internal project codenames during partner calls."
+        },
+        {
+          "id": "rule-iban",
+          "name": "Corporate IBAN",
+          "pattern": "\\b[A-Z]{2}\\d{2}[A-Z0-9]{10,24}\\b",
+          "flags": "g",
+          "riskLevel": "Critical",
+          "maskingStyle": "redact",
+          "enabled": true,
+          "description": "Detects European/International bank account identifiers."
+        }
+      ],
+      "updatedAt": "2026-11-18T14:33:05.358Z"
+    },
+    {
+      "id": "pol-dev",
+      "name": "Developer Coding & Live IDE",
+      "description": "Protects environment secrets, API keys, database URLs, and auth tokens while keeping non-sensitive emails visible.",
+      "isDefault": false,
+      "minRiskThreshold": "Medium",
+      "blurIntensity": 16,
+      "pixelBlockSize": 10,
+      "paddingPx": 6,
+      "requireManualReviewForUncertain": false,
+      "categories": {
+        "api_key": {
+          "enabled": true,
+          "maskingStyle": "blur",
+          "baseRisk": "Critical"
+        },
+        "password": {
+          "enabled": true,
+          "maskingStyle": "redact",
+          "baseRisk": "Critical"
+        },
+        "credit_card": {
+          "enabled": true,
+          "maskingStyle": "redact",
+          "baseRisk": "Critical"
+        },
+        "ssn": {
+          "enabled": true,
+          "maskingStyle": "redact",
+          "baseRisk": "Critical"
+        },
+        "email": {
+          "enabled": false,
+          "maskingStyle": "blur",
+          "baseRisk": "Low"
+        },
+        "phone": {
+          "enabled": true,
+          "maskingStyle": "blur",
+          "baseRisk": "Medium"
+        },
+        "confidential": {
+          "enabled": true,
+          "maskingStyle": "pixelate",
+          "baseRisk": "High"
+        },
+        "custom": {
+          "enabled": true,
+          "maskingStyle": "blur",
+          "baseRisk": "High"
+        },
+        "qr_code": {
+          "enabled": true,
+          "maskingStyle": "blur",
+          "baseRisk": "High"
+        },
+        "url": {
+          "enabled": true,
+          "maskingStyle": "blur",
+          "baseRisk": "High"
+        }
+      },
+      "customRules": [
+        {
+          "id": "rule-db-uri",
+          "name": "Postgres / Mongo Connection URI",
+          "pattern": "(?:postgres|mongodb\\+srv|redis):\\/\\/[^\\s\"'`]+",
+          "flags": "gi",
+          "riskLevel": "Critical",
+          "maskingStyle": "redact",
+          "enabled": true,
+          "description": "Masks embedded credentials inside database connection strings."
+        }
+      ],
+      "updatedAt": "2026-11-18T10:33:05.358Z"
+    },
+    {
+      "id": "pol-demo",
+      "name": "Client Product Demo",
+      "description": "Balanced masking using pixelation for customer PII and solid redaction for payment or credential fields.",
+      "isDefault": false,
+      "minRiskThreshold": "Medium",
+      "blurIntensity": 14,
+      "pixelBlockSize": 11,
+      "paddingPx": 5,
+      "requireManualReviewForUncertain": true,
+      "categories": {
+        "api_key": {
+          "enabled": true,
+          "maskingStyle": "redact",
+          "baseRisk": "Critical"
+        },
+        "password": {
+          "enabled": true,
+          "maskingStyle": "redact",
+          "baseRisk": "Critical"
+        },
+        "credit_card": {
+          "enabled": true,
+          "maskingStyle": "redact",
+          "baseRisk": "Critical"
+        },
+        "ssn": {
+          "enabled": true,
+          "maskingStyle": "redact",
+          "baseRisk": "Critical"
+        },
+        "email": {
+          "enabled": true,
+          "maskingStyle": "pixelate",
+          "baseRisk": "Medium"
+        },
+        "phone": {
+          "enabled": true,
+          "maskingStyle": "pixelate",
+          "baseRisk": "Medium"
+        },
+        "confidential": {
+          "enabled": true,
+          "maskingStyle": "blur",
+          "baseRisk": "High"
+        },
+        "custom": {
+          "enabled": true,
+          "maskingStyle": "blur",
+          "baseRisk": "Medium"
+        },
+        "qr_code": {
+          "enabled": true,
+          "maskingStyle": "blur",
+          "baseRisk": "High"
+        },
+        "url": {
+          "enabled": true,
+          "maskingStyle": "blur",
+          "baseRisk": "High"
+        }
+      },
+      "customRules": [],
+      "updatedAt": "2026-11-18T04:33:05.358Z"
+    }
+  ],
+  "sources": [
+    {
+      "id": "app-vscode",
+      "name": "Visual Studio Code",
+      "kind": "screen",
+      "applicationName": "Visual Studio Code",
+      "description": "Extreme mode · Masks .env secrets, API keys, and tokens",
+      "policyId": "pol-strict",
+      "enabled": true,
+      "autoStartProtection": true,
+      "lastUsedAt": "2026-11-18T16:21:05.358Z"
+    },
+    {
+      "id": "app-chrome",
+      "name": "Google Chrome",
+      "kind": "screen",
+      "applicationName": "Google Chrome",
+      "description": "Strict · Protects banking, dashboards, and customer data",
+      "policyId": "pol-strict",
+      "enabled": true,
+      "autoStartProtection": true,
+      "lastUsedAt": "2026-11-18T15:53:05.358Z"
+    },
+    {
+      "id": "app-slack",
+      "name": "Slack",
+      "kind": "screen",
+      "applicationName": "Slack",
+      "description": "Normal mode · Protects direct messages and shared credentials",
+      "policyId": "pol-demo",
+      "enabled": true,
+      "autoStartProtection": true,
+      "lastUsedAt": "2026-11-18T14:43:05.358Z"
+    },
+    {
+      "id": "app-teams",
+      "name": "Microsoft Teams",
+      "kind": "screen",
+      "applicationName": "Microsoft Teams",
+      "description": "Strict · Shields private notifications during screen shares",
+      "policyId": "pol-strict",
+      "enabled": true,
+      "autoStartProtection": true,
+      "lastUsedAt": "2026-11-18T11:43:05.358Z"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "ses-284ebfbb",
+      "userId": "usr-admin-01",
+      "userName": "Elena Vance",
+      "sourceId": "app-vscode",
+      "sourceName": "Window / Tab Share",
+      "policyId": "pol-strict",
+      "policyName": "Strict Enterprise Compliance",
+      "status": "active",
+      "startedAt": "2026-11-20T11:02:58.072Z",
+      "endedAt": null,
+      "framesProcessed": 5385,
+      "detectionsCount": 2,
+      "maskedCount": 2,
+      "panicTriggeredCount": 1
+    },
+    {
+      "id": "ses-e320e95e",
+      "userId": "usr-admin-01",
+      "userName": "Elena Vance",
+      "sourceId": "app-vscode",
+      "sourceName": "Window / Tab Share",
+      "policyId": "pol-strict",
+      "policyName": "Strict Enterprise Compliance",
+      "status": "ended",
+      "startedAt": "2026-11-20T10:49:57.344Z",
+      "endedAt": "2026-11-20T10:50:09.739Z",
+      "framesProcessed": 1546,
+      "detectionsCount": 2,
+      "maskedCount": 2,
+      "panicTriggeredCount": 0
+    },
+    {
+      "id": "ses-380fcdfc",
+      "userId": "usr-admin-01",
+      "userName": "Elena Vance",
+      "sourceId": "app-vscode",
+      "sourceName": "Window / Tab Share",
+      "policyId": "pol-strict",
+      "policyName": "Strict Enterprise Compliance",
+      "status": "ended",
+      "startedAt": "2026-11-20T05:51:34.301Z",
+      "endedAt": "2026-11-20T05:52:32.782Z",
+      "framesProcessed": 4339,
+      "detectionsCount": 2,
+      "maskedCount": 2,
+      "panicTriggeredCount": 0
+    },
+    {
+      "id": "ses-3d089ee3",
+      "userId": "usr-admin-01",
+      "userName": "Elena Vance",
+      "sourceId": "app-vscode",
+      "sourceName": "Window / Tab Share",
+      "policyId": "pol-strict",
+      "policyName": "Strict Enterprise Compliance",
+      "status": "ended",
+      "startedAt": "2026-11-20T05:38:07.559Z",
+      "endedAt": "2026-11-20T05:38:36.476Z",
+      "framesProcessed": 2908,
+      "detectionsCount": 1,
+      "maskedCount": 1,
+      "panicTriggeredCount": 1
+    },
+    {
+      "id": "ses-256ed891",
+      "userId": "usr-admin-01",
+      "userName": "Elena Vance",
+      "sourceId": "app-vscode",
+      "sourceName": "Window / Tab Share",
+      "policyId": "pol-strict",
+      "policyName": "Strict Enterprise Compliance",
+      "status": "ended",
+      "startedAt": "2026-11-20T05:34:08.296Z",
+      "endedAt": "2026-11-20T05:34:32.880Z",
+      "framesProcessed": 1193,
+      "detectionsCount": 1,
+      "maskedCount": 1,
+      "panicTriggeredCount": 0
+    },
+    {
+      "id": "ses-b6ff27fe",
+      "userId": "usr-admin-01",
+      "userName": "Elena Vance",
+      "sourceId": "app-vscode",
+      "sourceName": "Window / Tab Share",
+      "policyId": "pol-strict",
+      "policyName": "Strict Enterprise Compliance",
+      "status": "ended",
+      "startedAt": "2026-11-20T05:32:00.764Z",
+      "endedAt": "2026-11-20T05:32:35.233Z",
+      "framesProcessed": 103,
+      "detectionsCount": 0,
+      "maskedCount": 0,
+      "panicTriggeredCount": 1
+    },
+    {
+      "id": "ses-8fb9a47a",
+      "userId": "usr-admin-01",
+      "userName": "Elena Vance",
+      "sourceId": "app-vscode",
+      "sourceName": "Window / Tab Share",
+      "policyId": "pol-strict",
+      "policyName": "Strict Enterprise Compliance",
+      "status": "active",
+      "startedAt": "2026-11-19T13:28:34.593Z",
+      "endedAt": null,
+      "framesProcessed": 26791,
+      "detectionsCount": 1,
+      "maskedCount": 1,
+      "panicTriggeredCount": 0
+    },
+    {
+      "id": "ses-1001",
+      "userId": "usr-pres-01",
+      "userName": "Marcus Sterling",
+      "sourceId": "app-vscode",
+      "sourceName": "Visual Studio Code",
+      "policyId": "pol-dev",
+      "policyName": "Developer Coding & Live IDE",
+      "status": "ended",
+      "startedAt": "2026-11-18T13:28:05.358Z",
+      "endedAt": "2026-11-18T14:11:05.358Z",
+      "framesProcessed": 1290,
+      "detectionsCount": 7,
+      "maskedCount": 7,
+      "panicTriggeredCount": 0
+    },
+    {
+      "id": "ses-1002",
+      "userId": "usr-pres-02",
+      "userName": "Priya Nair",
+      "sourceId": "app-chrome",
+      "sourceName": "Google Chrome",
+      "policyId": "pol-strict",
+      "policyName": "Strict Enterprise Compliance",
+      "status": "ended",
+      "startedAt": "2026-11-18T14:58:05.358Z",
+      "endedAt": "2026-11-18T15:29:05.358Z",
+      "framesProcessed": 930,
+      "detectionsCount": 11,
+      "maskedCount": 10,
+      "panicTriggeredCount": 1
+    }
+  ],
+  "logs": [
+    {
+      "id": "log-5d49167c",
+      "sessionId": "ses-284ebfbb",
+      "userId": "usr-admin-01",
+      "userName": "Elena Vance",
+      "sourceName": "Screen Share",
+      "category": "qr_code",
+      "ruleName": "QR Code Detected",
+      "maskedSnippet": "QR ••••••••.org",
+      "confidence": 0.99,
+      "riskLevel": "High",
+      "actionTaken": "auto_masked",
+      "maskingStyle": "blur",
+      "timestamp": "2026-11-20T11:03:00.755Z"
+    },
+    {
+      "id": "log-8e5f60a3",
+      "sessionId": "ses-284ebfbb",
+      "userId": "usr-admin-01",
+      "userName": "Elena Vance",
+      "sourceName": "Screen Share",
+      "category": "api_key",
+      "ruleName": "High-Entropy Secret Key",
+      "maskedSnippet": "C/Us••••••••s/qr",
+      "confidence": 0.85,
+      "riskLevel": "High",
+      "actionTaken": "pending_review",
+      "maskingStyle": "blur",
+      "timestamp": "2026-11-20T11:03:00.756Z"
+    },
+    {
+      "id": "log-3ca6bdcb",
+      "sessionId": "ses-e320e95e",
+      "userId": "usr-admin-01",
+      "userName": "Elena Vance",
+      "sourceName": "Screen Share",
+      "category": "qr_code",
+      "ruleName": "QR Code Detected",
+      "maskedSnippet": "QR ••••••••.org",
+      "confidence": 0.99,
+      "riskLevel": "High",
+      "actionTaken": "auto_masked",
+      "maskingStyle": "blur",
+      "timestamp": "2026-11-20T10:49:58.416Z"
+    },
+    {
+      "id": "log-74f339d8",
+      "sessionId": "ses-e320e95e",
+      "userId": "usr-admin-01",
+      "userName": "Elena Vance",
+      "sourceName": "Screen Share",
+      "category": "api_key",
+      "ruleName": "High-Entropy Secret Key",
+      "maskedSnippet": "C/Us••••••••s/qr",
+      "confidence": 0.88,
+      "riskLevel": "Critical",
+      "actionTaken": "auto_masked",
+      "maskingStyle": "blur",
+      "timestamp": "2026-11-20T10:49:58.417Z"
+    },
+    {
+      "id": "log-fc2f34fe",
+      "sessionId": "ses-380fcdfc",
+      "userId": "usr-admin-01",
+      "userName": "Elena Vance",
+      "sourceName": "Screen Share",
+      "category": "qr_code",
+      "ruleName": "QR Code Detected",
+      "maskedSnippet": "QR ••••••••.org",
+      "confidence": 0.99,
+      "riskLevel": "High",
+      "actionTaken": "auto_masked",
+      "maskingStyle": "blur",
+      "timestamp": "2026-11-20T05:51:35.327Z"
+    },
+    {
+      "id": "log-b288e58e",
+      "sessionId": "ses-380fcdfc",
+      "userId": "usr-admin-01",
+      "userName": "Elena Vance",
+      "sourceName": "Screen Share",
+      "category": "api_key",
+      "ruleName": "High-Entropy Secret Key",
+      "maskedSnippet": "C/Us••••••••s/qr",
+      "confidence": 0.88,
+      "riskLevel": "Critical",
+      "actionTaken": "auto_masked",
+      "maskingStyle": "blur",
+      "timestamp": "2026-11-20T05:51:35.327Z"
+    },
+    {
+      "id": "log-20f39012",
+      "sessionId": "ses-3d089ee3",
+      "userId": "usr-admin-01",
+      "userName": "Elena Vance",
+      "sourceName": "Screen Share",
+      "category": "url",
+      "ruleName": "Web Link / Address Bar URL",
+      "maskedSnippet": "url ••••••••2F..",
+      "confidence": 0.8,
+      "riskLevel": "High",
+      "actionTaken": "pending_review",
+      "maskingStyle": "blur",
+      "timestamp": "2026-11-20T05:38:09.669Z"
+    },
+    {
+      "id": "log-1a58728a",
+      "sessionId": "ses-256ed891",
+      "userId": "usr-admin-01",
+      "userName": "Elena Vance",
+      "sourceName": "Screen Share",
+      "category": "url",
+      "ruleName": "Web Link / Address Bar URL",
+      "maskedSnippet": "url ••••••••2F..",
+      "confidence": 0.8,
+      "riskLevel": "High",
+      "actionTaken": "pending_review",
+      "maskingStyle": "blur",
+      "timestamp": "2026-11-20T05:34:11.705Z"
+    },
+    {
+      "id": "log-8b0a576a",
+      "sessionId": "ses-8fb9a47a",
+      "userId": "usr-admin-01",
+      "userName": "Elena Vance",
+      "sourceName": "Screen Share",
+      "category": "url",
+      "ruleName": "Web Link / Address Bar URL",
+      "maskedSnippet": "url ••••••••w...",
+      "confidence": 0.85,
+      "riskLevel": "High",
+      "actionTaken": "pending_review",
+      "maskingStyle": "blur",
+      "timestamp": "2026-11-19T13:28:38.079Z"
+    },
+    {
+      "id": "log-2001",
+      "sessionId": "ses-1001",
+      "userId": "usr-pres-01",
+      "userName": "Marcus Sterling",
+      "sourceName": "Visual Studio Code",
+      "category": "api_key",
+      "ruleName": "Stripe Live Secret Key",
+      "maskedSnippet": "sk_live_••••••••••••••••7f9a",
+      "confidence": 0.99,
+      "riskLevel": "Critical",
+      "actionTaken": "auto_masked",
+      "maskingStyle": "redact",
+      "timestamp": "2026-11-18T13:31:05.358Z"
+    },
+    {
+      "id": "log-2002",
+      "sessionId": "ses-1001",
+      "userId": "usr-pres-01",
+      "userName": "Marcus Sterling",
+      "sourceName": "Visual Studio Code",
+      "category": "password",
+      "ruleName": "Environment Password Assignment",
+      "maskedSnippet": "DB_PASSWORD=••••••••••••",
+      "confidence": 0.97,
+      "riskLevel": "Critical",
+      "actionTaken": "auto_masked",
+      "maskingStyle": "redact",
+      "timestamp": "2026-11-18T13:37:05.358Z"
+    },
+    {
+      "id": "log-2003",
+      "sessionId": "ses-1002",
+      "userId": "usr-pres-02",
+      "userName": "Priya Nair",
+      "sourceName": "Google Chrome",
+      "category": "credit_card",
+      "ruleName": "Luhn-Verified Payment Card",
+      "maskedSnippet": "4532 •••• •••• 8910",
+      "confidence": 0.99,
+      "riskLevel": "Critical",
+      "actionTaken": "auto_masked",
+      "maskingStyle": "redact",
+      "timestamp": "2026-11-18T15:02:05.358Z"
+    },
+    {
+      "id": "log-2004",
+      "sessionId": "ses-1002",
+      "userId": "usr-pres-02",
+      "userName": "Priya Nair",
+      "sourceName": "Google Chrome",
+      "category": "email",
+      "ruleName": "Customer Email Address",
+      "maskedSnippet": "j.••••••@acme-corp.com",
+      "confidence": 0.94,
+      "riskLevel": "Medium",
+      "actionTaken": "approved_visible",
+      "maskingStyle": "blur",
+      "timestamp": "2026-11-18T15:09:05.358Z"
+    },
+    {
+      "id": "log-2005",
+      "sessionId": "ses-1002",
+      "userId": "usr-pres-02",
+      "userName": "Priya Nair",
+      "sourceName": "Google Chrome",
+      "category": "phone",
+      "ruleName": "North American Phone Number",
+      "maskedSnippet": "+1 (415) •••-8421",
+      "confidence": 0.91,
+      "riskLevel": "Medium",
+      "actionTaken": "auto_masked",
+      "maskingStyle": "blur",
+      "timestamp": "2026-11-18T15:14:05.358Z"
+    },
+    {
+      "id": "log-2006",
+      "sessionId": "ses-1002",
+      "userId": "usr-pres-02",
+      "userName": "Priya Nair",
+      "sourceName": "Google Chrome",
+      "category": "confidential",
+      "ruleName": "Confidential Classification Marker",
+      "maskedSnippet": "CONFIDENTIAL ••••••••",
+      "confidence": 0.88,
+      "riskLevel": "High",
+      "actionTaken": "auto_masked",
+      "maskingStyle": "pixelate",
+      "timestamp": "2026-11-18T15:21:05.358Z"
+    }
+  ],
+  "feedback": [
+    {
+      "id": "fb-b3ea6549",
+      "userId": "usr-admin-01",
+      "userName": "Elena Vance",
+      "category": "api_key",
+      "ruleName": "Smoke Test Key",
+      "maskedSnippet": "sk_••••1234",
+      "verdict": "correct",
+      "timestamp": "2026-11-19T12:35:38.595Z"
+    },
+    {
+      "id": "fb-3001",
+      "userId": "usr-pres-01",
+      "userName": "Marcus Sterling",
+      "category": "api_key",
+      "ruleName": "Stripe / Payment Secret Key",
+      "maskedSnippet": "sk_live_••••••••7f9a",
+      "verdict": "correct",
+      "timestamp": "2026-11-19T09:45:34.080Z"
+    },
+    {
+      "id": "fb-3002",
+      "userId": "usr-pres-02",
+      "userName": "Priya Nair",
+      "category": "credit_card",
+      "ruleName": "Luhn-Verified Payment Card",
+      "maskedSnippet": "•••• •••• •••• 8910",
+      "verdict": "correct",
+      "timestamp": "2026-11-19T11:07:34.080Z"
+    }
+  ],
+  "auditLogs": [
+    {
+      "actorId": "usr-admin-01",
+      "actorName": "Elena Vance",
+      "action": "USER_LOGIN",
+      "target": "admin@blurguard.io",
+      "details": "Signed in as Administrator",
+      "id": "aud-141361c0",
+      "timestamp": "2026-11-27T07:19:02.160Z"
+    },
+    {
+      "actorId": "usr-admin-01",
+      "actorName": "Elena Vance",
+      "action": "USER_LOGIN",
+      "target": "admin@blurguard.io",
+      "details": "Signed in as Administrator",
+      "id": "aud-f14bf712",
+      "timestamp": "2026-11-26T17:05:16.011Z"
+    },
+    {
+      "actorId": "usr-admin-01",
+      "actorName": "Elena Vance",
+      "action": "USER_LOGIN",
+      "target": "admin@blurguard.io",
+      "details": "Signed in as Administrator",
+      "id": "aud-0e98b155",
+      "timestamp": "2026-11-26T17:03:21.896Z"
+    },
+    {
+      "actorId": "usr-admin-01",
+      "actorName": "Elena Vance",
+      "action": "USER_LOGIN",
+      "target": "admin@blurguard.io",
+      "details": "Signed in as Administrator",
+      "id": "aud-70b0386f",
+      "timestamp": "2026-11-26T17:03:20.304Z"
+    },
+    {
+      "actorId": "usr-admin-01",
+      "actorName": "Elena Vance",
+      "action": "PANIC_ENGAGED",
+      "target": "Live Screen Output",
+      "details": "Protected output engaged",
+      "id": "aud-5c06a0ee",
+      "timestamp": "2026-11-20T11:04:00.693Z"
+    },
+    {
+      "actorId": "usr-admin-01",
+      "actorName": "Elena Vance",
+      "action": "USER_LOGIN",
+      "target": "admin@blurguard.io",
+      "details": "Signed in as Administrator",
+      "id": "aud-00e7e006",
+      "timestamp": "2026-11-20T11:02:34.300Z"
+    },
+    {
+      "actorId": "usr-admin-01",
+      "actorName": "Elena Vance",
+      "action": "USER_LOGIN",
+      "target": "admin@blurguard.io",
+      "details": "Signed in as Administrator",
+      "id": "aud-4d5b0d97",
+      "timestamp": "2026-11-20T11:02:15.267Z"
+    },
+    {
+      "actorId": "usr-admin-01",
+      "actorName": "Elena Vance",
+      "action": "USER_LOGIN",
+      "target": "admin@blurguard.io",
+      "details": "Signed in as Administrator",
+      "id": "aud-0baf0cad",
+      "timestamp": "2026-11-20T10:48:43.425Z"
+    },
+    {
+      "actorId": "usr-admin-01",
+      "actorName": "Elena Vance",
+      "action": "PANIC_CLEARED",
+      "target": "Live Screen Output",
+      "details": "Normal live monitoring resumed",
+      "id": "aud-7349b0ea",
+      "timestamp": "2026-11-20T05:38:34.558Z"
+    },
+    {
+      "actorId": "usr-admin-01",
+      "actorName": "Elena Vance",
+      "action": "PANIC_ENGAGED",
+      "target": "Live Screen Output",
+      "details": "Protected output engaged",
+      "id": "aud-2a68584c",
+      "timestamp": "2026-11-20T05:38:26.810Z"
+    },
+    {
+      "actorId": "usr-admin-01",
+      "actorName": "Elena Vance",
+      "action": "USER_LOGIN",
+      "target": "admin@blurguard.io",
+      "details": "Signed in as Administrator",
+      "id": "aud-ccb2f527",
+      "timestamp": "2026-11-20T05:37:41.673Z"
+    },
+    {
+      "actorId": "usr-admin-01",
+      "actorName": "Elena Vance",
+      "action": "PANIC_CLEARED",
+      "target": "Live Screen Output",
+      "details": "Normal live monitoring resumed",
+      "id": "aud-e79deb87",
+      "timestamp": "2026-11-20T05:32:16.728Z"
+    },
+    {
+      "actorId": "usr-admin-01",
+      "actorName": "Elena Vance",
+      "action": "PANIC_ENGAGED",
+      "target": "Live Screen Output",
+      "details": "Protected output engaged",
+      "id": "aud-47dd4524",
+      "timestamp": "2026-11-20T05:32:11.824Z"
+    },
+    {
+      "actorId": "usr-admin-01",
+      "actorName": "Elena Vance",
+      "action": "USER_LOGIN",
+      "target": "admin@blurguard.io",
+      "details": "Signed in as Administrator",
+      "id": "aud-b39c5e72",
+      "timestamp": "2026-11-20T05:31:36.999Z"
+    },
+    {
+      "actorId": "usr-admin-01",
+      "actorName": "Elena Vance",
+      "action": "USER_LOGIN",
+      "target": "admin@blurguard.io",
+      "details": "Signed in as Administrator",
+      "id": "aud-494fecf9",
+      "timestamp": "2026-11-20T05:29:16.398Z"
+    },
+    {
+      "actorId": "usr-e122e8bc",
+      "actorName": "Lakshita Dabra",
+      "action": "USER_LOGIN",
+      "target": "lakshitadabra21@gmail.com",
+      "details": "Signed in as Presenter",
+      "id": "aud-3eadfe9b",
+      "timestamp": "2026-11-19T13:40:08.205Z"
+    },
+    {
+      "actorId": "usr-admin-01",
+      "actorName": "Elena Vance",
+      "action": "USER_LOGIN",
+      "target": "admin@blurguard.io",
+      "details": "Signed in as Administrator",
+      "id": "aud-3d91d357",
+      "timestamp": "2026-11-19T13:36:06.489Z"
+    },
+    {
+      "actorId": "usr-admin-01",
+      "actorName": "Elena Vance",
+      "action": "USER_LOGIN",
+      "target": "admin@blurguard.io",
+      "details": "Signed in as Administrator",
+      "id": "aud-901bc8b6",
+      "timestamp": "2026-11-19T13:23:05.169Z"
+    },
+    {
+      "actorId": "usr-admin-01",
+      "actorName": "Elena Vance",
+      "action": "USER_LOGIN",
+      "target": "admin@blurguard.io",
+      "details": "Signed in as Administrator",
+      "id": "aud-f165190d",
+      "timestamp": "2026-11-19T13:22:54.434Z"
+    },
+    {
+      "actorId": "usr-admin-01",
+      "actorName": "Elena Vance",
+      "action": "USER_LOGIN",
+      "target": "admin@blurguard.io",
+      "details": "Signed in as Administrator",
+      "id": "aud-faf689f3",
+      "timestamp": "2026-11-19T12:43:22.667Z"
+    },
+    {
+      "actorId": "usr-admin-01",
+      "actorName": "Elena Vance",
+      "action": "USER_LOGIN",
+      "target": "admin@blurguard.io",
+      "details": "Signed in as Administrator",
+      "id": "aud-3b1f49d7",
+      "timestamp": "2026-11-19T12:43:06.508Z"
+    },
+    {
+      "actorId": "usr-admin-01",
+      "actorName": "Elena Vance",
+      "action": "DETECTION_FEEDBACK",
+      "target": "Smoke Test Key",
+      "details": "Marked detection as Correct",
+      "id": "aud-c8c14a50",
+      "timestamp": "2026-11-19T12:35:38.596Z"
+    },
+    {
+      "actorId": "usr-admin-01",
+      "actorName": "Elena Vance",
+      "action": "USER_LOGIN",
+      "target": "admin@blurguard.io",
+      "details": "Signed in as Administrator",
+      "id": "aud-92c701f9",
+      "timestamp": "2026-11-19T12:35:38.563Z"
+    },
+    {
+      "id": "aud-4001",
+      "actorId": "usr-admin-01",
+      "actorName": "Elena Vance",
+      "action": "UPDATE_POLICY",
+      "target": "Strict Enterprise Compliance",
+      "details": "Configured default masking policy for workspace screens",
+      "timestamp": "2026-11-19T10:35:34.080Z"
+    },
+    {
+      "id": "aud-4002",
+      "actorId": "usr-admin-01",
+      "actorName": "Elena Vance",
+      "action": "UPDATE_CONFIG",
+      "target": "System Privacy",
+      "details": "Enforced local-only processing and redacted snippet storage",
+      "timestamp": "2026-11-19T11:35:34.080Z"
+    }
+  ],
+  "config": {
+    "ocrEngine": "tesseract_wasm",
+    "preprocessGrayscale": true,
+    "preprocessContrastBoost": true,
+    "scanIntervalMs": 1200,
+    "confidenceThreshold": 0.75,
+    "performanceMode": "balanced",
+    "launchAtStartup": true,
+    "autoStartMonitoring": false,
+    "systemTrayEnabled": true,
+    "localProcessingOnly": true,
+    "cloudAnalysisDisabled": true,
+    "defaultMaskingStyle": "blur",
+    "storeRedactedSnippetsOnly": true,
+    "retentionDays": 30,
+    "enableSoundAlerts": false,
+    "enableDesktopAlerts": true,
+    "autoPauseOnIdleMinutes": 15,
+    "enforceStrictPolicyForGuests": true,
+    "auditLoggingEnabled": true,
+    "updatedAt": "2026-11-18T15:33:05.358Z"
+  }
+}
